@@ -9,5 +9,8 @@
   },
   "scripts": {
     "test": "echo do nothing"
+  },
+  "engines": {
+    "node": "9.9.0"
   }
 }
