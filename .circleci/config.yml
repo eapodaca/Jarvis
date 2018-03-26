@@ -1,5 +1,4 @@
 version: 2
-version: 2
 jobs:
   build:
     docker:
@@ -15,8 +14,31 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test
-deployment:
-  production:
-    branch: master
-    heroku:
-      appname: jarvis-bazooka
+  deploy-job:
+    docker:
+      - image: circleci/node:9.9-stretch
+    working_directory: /tmp/my-project
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "48:a0:87:54:ca:75:32:12:c6:9e:a2:77:a4:7a:08:a4"
+      - run:
+          name: Run Setup Script
+          command: bash .circleci/setup-heroku.sh
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            heroku git:remote -a $HEROKU_APP_NAME
+            git push --force git@heroku.com:$HEROKU_APP_NAME.git HEAD:refs/heads/master
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy-job:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
