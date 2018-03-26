@@ -34,11 +34,10 @@ const messages = {
   ]
 };
 
-const random = (values) => (res) => res.send(values.randomElement());
+const random = (values) => (res) => res.send(Array.isArray(values) ? values.randomElement() : values);
 
 module.exports = (robot) => {
   Object.keys(messages).forEach((messageKey) => {
-    const resp = Array.isArray(messages[messageKey]) ? messages[messageKey] : [messages[messageKey]];
-    robot.hear(new RegExp(messageKey, "i"), random(resp));
+    robot.hear(new RegExp(messageKey, "i"), random(messages[messageKey]));
   });
 };
