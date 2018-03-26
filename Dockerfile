@@ -6,4 +6,4 @@ workdir /app
 
 run yarn
 
-entrypoint /app/bin/hubot
+entrypoint /app/bin/jarvis
