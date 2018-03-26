@@ -6,5 +6,8 @@
   "dependencies": {
     "hubot": "^2.19.0",
     "hubot-matteruser": "^4.4.0"
+  },
+  "scripts": {
+    "test": "echo do nothing"
   }
 }

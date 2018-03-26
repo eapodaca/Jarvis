@@ -1,0 +1,22 @@
+version: 2
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:9.9
+    working_directory: ~/Jarvis
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: yarn test
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: jarvis-bazooka
