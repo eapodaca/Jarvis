@@ -40,4 +40,8 @@ module.exports = (robot) => {
   Object.keys(messages).forEach((messageKey) => {
     robot.hear(new RegExp(messageKey, "i"), random(messages[messageKey]));
   });
+
+  robot.router.get("/", (req, res) => {
+    res.send("I am Jarvis, Hello!");
+  });
 };
