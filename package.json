@@ -5,7 +5,6 @@
   "author": "Ethan Apodaca <papodaca@gmail.com>",
   "dependencies": {
     "hubot": "^2.19.0",
-    "hubot-heroku-keepalive": "^1.0.3",
     "hubot-matteruser": "^4.4.0"
   },
   "scripts": {

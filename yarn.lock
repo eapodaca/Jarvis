@@ -523,10 +523,6 @@ https-proxy-agent@^2.1.0:
     agent-base "^4.1.0"
     debug "^3.1.0"
 
-hubot-heroku-keepalive@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/hubot-heroku-keepalive/-/hubot-heroku-keepalive-1.0.3.tgz#2950e28095ee4a6ace2b76f90e2a91ba91e6813c"
-
 hubot-matteruser@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/hubot-matteruser/-/hubot-matteruser-4.4.0.tgz#a18f6bf079ab6c52b2c4fc82456ceb3c0de1c33e"
