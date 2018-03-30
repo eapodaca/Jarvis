@@ -32,8 +32,9 @@ module.exports = function(robot) {
 });
 
   robot.respond(/ambush (.*?): (.*)/i, function(msg) {
-    return msg.send(`TRACE: ${msg};; ${msg.message}`);
-    const users = robot.brain.usersForFuzzyName(msg.match[1].trim());
+    const target = res.match[1].trim();
+    const users = robot.brain.usersForFuzzyName(target);
+    return msg.send(`TRACE: ${msg.match[1]};; ${target};; ${users};; ${users.length}`);
     if (users.length === 1) {
       const user = users[0];
       appendAmbush(robot.brain.data.ambushes, user, msg.message.user, `${msg.match[2]} sent at ${new Date()}`);
