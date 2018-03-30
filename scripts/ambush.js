@@ -32,6 +32,7 @@ module.exports = function(robot) {
 });
 
   robot.respond(/ambush (.*?): (.*)/i, function(msg) {
+    return msg.send(`TRACE: ${msg};; ${msg.message}`);
     const users = robot.brain.usersForFuzzyName(msg.match[1].trim());
     if (users.length === 1) {
       const user = users[0];
