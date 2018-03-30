@@ -4,8 +4,10 @@
   "private": true,
   "author": "Ethan Apodaca <papodaca@gmail.com>",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "hubot": "^2.19.0",
-    "hubot-matteruser": "^4.4.0"
+    "hubot-matteruser": "^4.4.0",
+    "request": "^2.85.0"
   },
   "scripts": {
     "test": "echo do nothing"
