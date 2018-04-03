@@ -27,6 +27,7 @@ const messages = {
     ":spaghetti:",
     ":poultry_leg:"
   ],
+  "help": "https://media.giphy.com/media/phJ6eMRFYI6CQ/giphy.gif",
   "weather": "http://i.imgur.com/PCWqrYG.gif",
   "reference": "https://i.imgur.com/XS5LK.gif",
   "fine": "https://media.giphy.com/media/3o6UBpHgaXFDNAuttm/giphy.gif",
