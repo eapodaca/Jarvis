@@ -42,7 +42,7 @@ const random = (values) => (res) => res.send(Array.isArray(values) ? values.rand
 
 module.exports = (robot) => {
   Object.keys(messages).forEach((messageKey) => {
-    robot.hear(new RegExp(messageKey, "i"), random(messages[messageKey]));
+    robot.hear(new RegExp(`(?:^|\\W)${messageKey}(?:\\W|$)`, "i"), random(messages[messageKey]));
   });
 
   robot.router.get("/", (req, res) => {
