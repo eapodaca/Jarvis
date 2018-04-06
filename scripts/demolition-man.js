@@ -39,8 +39,6 @@ module.exports = function(robot) {
     'fag',
     'fotze',
     'fuck',
-    'fucked',
-    'fucking',
     'kacke',
     'piss',
     'pisse',
@@ -50,7 +48,7 @@ module.exports = function(robot) {
     'wank',
     'wichser'
   ];
-  const regex = new RegExp(`(?:^|\\s)(${words.join('|')})(?:\\s|\\.|\\?|!|$)`, 'i');
+  const regex = new RegExp(`(?:^|\\W)(${words.join('|')})(?:\\w?ed|es|ing|s)?(?:\\W|$)`, 'i');
 
   return robot.hear(regex, msg => msg.send('You have been fined one credit for a violation of the verbal morality statute.'));
 };
