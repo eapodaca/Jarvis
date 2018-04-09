@@ -30,7 +30,6 @@ const messages = {
   "help": "https://media.giphy.com/media/phJ6eMRFYI6CQ/giphy.gif",
   "weather": "http://i.imgur.com/PCWqrYG.gif",
   "reference": "https://i.imgur.com/XS5LK.gif",
-  "barb|strange|things": "https://www.youtube.com/watch?v=2ObcrzOZar0",
   "fine": "https://media.giphy.com/media/3o6UBpHgaXFDNAuttm/giphy.gif",
   "options": [
     "https://media.giphy.com/media/K7QDQeUgrIyFW/giphy.gif",
