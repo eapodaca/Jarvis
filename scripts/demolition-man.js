@@ -49,6 +49,7 @@ const insults = [
     'arrse',
     'arse',
     'ass',
+    'asshat',
     'ass-fucker',
     'assfucker',
     'assfukka',
