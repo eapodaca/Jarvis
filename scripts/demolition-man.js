@@ -330,5 +330,5 @@ module.exports = function(robot) {
   const regex = new RegExp(`(?:^|\\W)(${insults.join('|')})(?:\\w?ed|es|ing|s)?(?:\\W|$)`, 'i');
   robot.hear(regex, msg => msg.send('You have been fined one credit for a violation of the verbal morality statute.'));
   
-  return robot.respond(/insult/i, msg => msg.send(`${insults[Math.floor(Math.random() * insults.length)].replace((/[\\\+]+/g, '')}`));
+  return robot.respond(/insult/i, msg => msg.send(`${insults[Math.floor(Math.random() * insults.length)].replace(/[\\\+]+/g, '')}`));
 };
