@@ -119,7 +119,7 @@ const insults = [
     'dildo',
     'dink',
     'dirsa',
-    'dog-fucker',
+    'dog\\-fucker',
     'doggin',
     'dogging',
     'donkeyribber',
@@ -326,19 +326,9 @@ const insults = [
     'willy'
 ];
 
-Array.prototype.randomElement = function () {
-  if(this.length === 0) {
-    undefined;
-  } else if(this.length === 1) {
-    this[0];
-  }
-  return this[Math.floor(Math.random() * this.length)];
-};
-const random = (values) => (res) => res.send(Array.isArray(values) ? values.randomElement() : values);
-
 module.exports = function(robot) {
   const regex = new RegExp(`(?:^|\\W)(${insults.join('|')})(?:\\w?ed|es|ing|s)?(?:\\W|$)`, 'i');
   robot.hear(regex, msg => msg.send('You have been fined one credit for a violation of the verbal morality statute.'));
   
-  return robot.respond(/insult/i, msg => msg.send(`${random(insults)}`));
+  return robot.respond(/insult/i, msg => msg.send(`${insults[Math.floor(Math.random() * insults.length)].replace((/[\\\+]+/g, '')}`));
 };
