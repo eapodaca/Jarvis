@@ -16,7 +16,7 @@
 //
 // Author:
 //   whitman, jan0sch
-const insults = [
+const words = [
     'arsch',
     'arschloch',
     'arse',
@@ -66,7 +66,7 @@ const insults = [
     'biatch',
     'bitch',
     'bitcher',
-    'blow job',
+    'blow\\ job',
     'blowjob',
     'boiolas',
     'bollock',
@@ -76,12 +76,12 @@ const insults = [
     'breast',
     'buceta',
     'bugger',
-    'bunny fucker',
+    'bunny\\ fucker',
     'butt',
     'butthole',
     'buttmuch',
     'buttplug',
-    'carpet muncher',
+    'carpet\\ muncher',
     'cawk',
     'chink',
     'cipa',
@@ -89,7 +89,7 @@ const insults = [
     'clitoris',
     'cnut',
     'cock',
-    'cock-sucker',
+    'cock\\-sucker',
     'cockface',
     'cockhead',
     'cockmunch',
@@ -161,7 +161,7 @@ const insults = [
     'fuckme',
     'fuckwhit',
     'fuckwit',
-    'fudge packer',
+    'fudge\\ packer',
     'fudgepacker',
     'fuk',
     'fuker',
@@ -185,10 +185,10 @@ const insults = [
     'horniest',
     'horny',
     'hotsex',
-    'jack-off',
+    'jack\\-off',
     'jackoff',
     'jap',
-    'jerk-off',
+    'jerk\\-off',
     'jism',
     'jiz',
     'jizm',
@@ -207,11 +207,11 @@ const insults = [
     'lmfao',
     'lust',
     'masochist',
-    'master-bate',
+    'master\\-bate',
     'masterbate',
     'masterbation',
     'masturbate',
-    'mo-fo',
+    'mo\\-fo',
     'mofo',
     'mothafuck',
     'mothafucka',
@@ -230,7 +230,7 @@ const insults = [
     'niggaz',
     'nigger',
     'nob',
-    'nob jokey',
+    'nob\\ jokey',
     'nobhead',
     'nobjocky',
     'nobjokey',
@@ -290,7 +290,7 @@ const insults = [
     'smegma',
     'smut',
     'snatch',
-    'son-of-a-bitch',
+    'son\\-of\\-a\\-bitch',
     'spac',
     'spunk',
     'teets',
@@ -340,5 +340,5 @@ module.exports = function(robot) {
   const regex = new RegExp(`(?:^|\\W)(${insults.join('|')})(?:\\w?ed|es|ing|s)?(?:\\W|$)`, 'i');
   robot.hear(regex, msg => msg.send('You have been fined one credit for a violation of the verbal morality statute.'));
   
-  return robot.respond(/insult, msg => msg.send(`${random(insults)}`));
+  return robot.respond(/insult/i, msg => msg.send(`${random(insults)}`));
 };
