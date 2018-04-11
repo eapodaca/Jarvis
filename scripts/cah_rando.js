@@ -1293,18 +1293,18 @@ const whitecards = ["Flying sex snakes.",
 ];
 
 var random = function(somearray) {
-	return somearray[Math.floor(Math.random() * somearray.length)
+	return somearray[Math.floor(Math.random() * somearray.length)];
 }
 
 var whitecard = function() {
-	return random(whitecards)
+	return random(whitecards);
 }
 
 module.exports = function(robot) {
 	return robot.respond(/rando (.*)/i, function(msg) {
-		const username = msg.match[1]
-		const blackcard = random([true, false])? random(namedblackcards) : random(answeredblackcards)
-		const answer = blackcard.replace(/$username/g,username).replace('$whitecard', whitecard()).replace('$whitecard', whitecard()).replace('$whitecard', whitecard())
-		return msg.send(answer)
+		const username = msg.match[1];
+		const blackcard = random([true, false])? random(namedblackcards) : random(answeredblackcards);
+		const answer = blackcard.replace(/$username/g,username).replace('$whitecard', whitecard()).replace('$whitecard', whitecard()).replace('$whitecard', whitecard());
+		return msg.send(answer);
 	});
 };
