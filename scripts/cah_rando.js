@@ -1301,8 +1301,8 @@ var whitecard = function() {
 }
 
 module.exports = function(robot) {
-	return robot.respond(/rando (.*)/i, function(msg) {
-		const username = msg.match[1];
+	return robot.respond(/rando ?(.*)?/i, function(msg) {
+		const username = msg.match[1]? msg.match[1] : random(["Jarvis", "Meatbag", "Rando", "Alex's mom"]);
 		const blackcard = random([true, false])? random(namedblackcards) : random(answeredblackcards);
 		const answer = blackcard.replace(/\$username/g,username).replace('$whitecard', whitecard()).replace('$whitecard', whitecard()).replace('$whitecard', whitecard());
 		return msg.send(answer);
