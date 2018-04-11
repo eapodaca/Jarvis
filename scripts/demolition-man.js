@@ -16,7 +16,7 @@
 //
 // Author:
 //   whitman, jan0sch
-const words = [
+const insults = [
     'arsch',
     'arschloch',
     'arse',
