@@ -36,3 +36,6 @@ workflows:
           filters:
             branches:
               only: master
+notify:
+  webhooks:
+    - url: https://mattermost.au.iyg.im/hooks/8bbxkj74dtyxmmayn4zn81duty
