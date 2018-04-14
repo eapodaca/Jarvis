@@ -7,12 +7,14 @@
     "cheerio": "^1.0.0-rc.2",
     "hubot": "^2.19.0",
     "hubot-matteruser": "^4.4.0",
+    "hubot-redis-brain": "^0.0.4",
     "request": "^2.85.0"
   },
   "scripts": {
     "test": "echo do nothing"
   },
   "engines": {
-    "node": "9.9.0"
+    "node": "9.9.0",
+    "yarn": "1.5.1"
   }
 }
