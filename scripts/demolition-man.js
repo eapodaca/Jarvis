@@ -292,7 +292,6 @@ const insults = [
     'smut',
     'snatch',
     'son\\-of\\-a\\-bitch',
-    'spac',
     'spunk',
     'teets',
     'teez',
