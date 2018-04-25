@@ -319,14 +319,10 @@ const insults = [
 ];
 
 module.exports = function(robot) {
-	robot.respond(/swear/i, function(msg) {
-		var preparsed_msg = msg.replace(new RegExp(`[^\w\s"]`, 'g'), ''); //.replace(new RegExp('\s+', 'g'),' ');
-		var regex_result = preparsed_msg.match(new RegExp(`(?:(?:^|[^a-z"])(${insults.join('|')})(?:[a-z]?ed|es|ing|s)?(?:[^a-z"]|$))(?=(?:[^"]*"[^"]*")*[^"]*$)`, 'i'));
-		return msg.send('msg:' + msg + '; preparsed_msg:' + preparsed_msg + '; matched:' + (regex_result? 'true' : 'false'));
-		//if ( regex_result ) {
-		//	msg.send('You have been fined one credit for a violation of the verbal morality statute.');
-		//}
-	});
-	
-	robot.respond(/insult/i, msg => msg.send(`${insults[Math.floor(Math.random() * insults.length)].replace(/[\\\+]+/g, '')}`));
+  const regex = new RegExp(`(?:(?:^|[^a-z"])(${insults.join('|')})(?:[a-z]?ed|es|ing|s)?(?:[^a-z"]|$))(?=(?:[^"]*"[^"]*")*[^"]*$)`, 'i');
+  robot.hear(regex, msg => msg.send('You have been fined one credit for a violation of the verbal morality statute.'));
+  
+  return robot.respond(/insult/i, msg => msg.send(`${insults[Math.floor(Math.random() * insults.length)].replace(/[\\\+]+/g, '')}`));
 };
+
+
