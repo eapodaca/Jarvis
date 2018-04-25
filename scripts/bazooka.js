@@ -31,6 +31,7 @@ const messages = {
   "weather": "http://i.imgur.com/PCWqrYG.gif",
   "reference": "https://i.imgur.com/XS5LK.gif",
   "fine": "https://media.giphy.com/media/3o6UBpHgaXFDNAuttm/giphy.gif",
+  "work|working": "https://i.imgur.com/gajx18c.gifv",
   "options": [
     "https://media.giphy.com/media/K7QDQeUgrIyFW/giphy.gif",
     "https://media.giphy.com/media/xUA7aUNw61j9Vdzs0U/giphy.gif"
