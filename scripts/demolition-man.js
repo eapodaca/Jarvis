@@ -318,13 +318,12 @@ const insults = [
     'willy'
 ];
 
-const swearing_regex = new RegExp(`(?:(?:^|[^a-z"])(${insults.join('|')})(?:[a-z]?ed|es|ing|s)?(?:[^a-z"]|$))(?=(?:[^"]*"[^"]*")*[^"]*$)`, 'i');
 module.exports = function(robot) {
 	robot.hear(/.{3,}/, function(msg) {
 		var preparsed_msg = msg.replace(/[^\w\s"]/gu, '').replace(/\s+/gu,' ');
-		var regex_result = swearing_regex.exec(preparsed_msg);
+		var regex_result = preparsed_msg.match(/(?:(?:^|[^a-z"])(${insults.join('|')})(?:[a-z]?ed|es|ing|s)?(?:[^a-z"]|$))(?=(?:[^"]*"[^"]*")*[^"]*$)/i);
 		if ( regex_result ) {
-			(res) => res.send('You have been fined one credit for a violation of the verbal morality statute.');
+			msg.send('You have been fined one credit for a violation of the verbal morality statute.');
 		}
 	});
 	
