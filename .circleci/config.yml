@@ -22,3 +22,4 @@ workflows:
 notify:
   webhooks:
     - url: https://jarvis.platform.apodaca.im/circle-ci
+    - url: https://gentle-dusk-29265.herokuapp.com/y4bjjiy4
