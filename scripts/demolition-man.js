@@ -337,7 +337,7 @@ module.exports = function(robot) {
     var accountbalance = robot.brain.get(`${msg.envelope.user.name}__accountbalance`) * 1 || 0;
     accountbalance = accountbalance + 1;
     robot.brain.set(`${msg.envelope.user.name}__accountbalance`, accountbalance);
-    msg.send(`${msg.envelope.user.name} has been fined one credit for a total of ${accountbalance} credits in violation of the verbal morality statute`);
+    msg.send(`You have been fined one credit for a total of ${accountbalance} credits in violation of the verbal morality statute`);
   });
   
   return robot.respond(/insult/i, msg => msg.send(`${insults[Math.floor(Math.random() * insults.length)].replace(/[\\\+]+/g, '')}`));
