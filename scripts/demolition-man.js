@@ -334,31 +334,26 @@ module.exports = function(robot) {
   const finesregex = new RegExp(`(?:(?:^|[^a-z"])(${fineableoffense.join('|')})(?:[a-z]?ed|es|ing|s)?(?:[^a-z"]|$))(?=(?:[^"]*"[^"]*")*[^"]*$)`, 'i');
   robot.hear(finesregex, msg => 
   {
-    var finecount = ((msg || '').match(finesregex) || []).length;
+    const finecount = ((msg || '').match(finesregex) || []).length;
     var accountbalance = robot.brain.get(`${msg.envelope.user.name}__accountbalance`) * 1 || 0;
     accountbalance = accountbalance + finecount;
     robot.brain.set(`${msg.envelope.user.name}__accountbalance`, accountbalance);
-    var pluralcredits = finecount == 1? 'credit' : 'credits';
+    const pluralcredits = finecount == 1? 'credit' : 'credits';
     msg.send(`You have been fined ${finecount} ${pluralcredits} for a total of ${accountbalance} credits in violation of the verbal morality statute`);
   });
   
   robot.respond(/insult/i, msg => msg.send(`${insults[Math.floor(Math.random() * insults.length)].replace(/[\\\+]+/g, '')}`));
   
-  const pointsregex = new RegExp(`givepoints\s?(\w*)\s?([0-9]*)`, 'i');
+  const pointsregex = new RegExp(`givepoints\ (\w+)\ ([0-9]*)`, 'i');
   robot.respond(pointsregex, msg => 
   {
-    var username = msg.match[1]? msg.match[1] : 'jarvis';
+    const username = msg.match[1];
     var accountbalance = robot.brain.get(`${username}__accountbalance`) * 1 || 0;
-    accountbalance = accountbalance + msg.match[2]? Math.abs(Number(msg.match[2])) : 1;
+    accountbalance = accountbalance + msg.match[2]? Number(msg.match[2]) : 1;
     robot.brain.set(`${username}__accountbalance`, accountbalance);
     msg.send(`${username} now has ${accountbalance} credits`);
   });
   
-  //9b5ysemyc3yj58nyhjwuo1tesr commanderdirtbag
-  //58si1nf84iy67fhjwiboohbaha sarif
-  //4bn51hjxqtbm8p59kbh9za6gxc barsandpwn
-  //e37h1xepsffz9r46yyafhok9ch celophi
-  //1n5wqo6nepfczdnum7eabbsyhc pizzahands
   robot.respond(/whatsmyid/i, msg => msg.send(`${msg.envelope.user.name}`));
 };
 
