@@ -4,12 +4,12 @@ module.exports = (robot) => {
     const username = data.all_commit_details[0].author_login;
     message = "";
     if(!data.failed) {
-      message = `:ok_man:  I've been deployed successfully by ${username}`;
+      message = `:ok_man:  I've been deployed successfully by ${username}.`;
     } else {
       message = `:interrobang:  My deploy failed. Shame on you ${username}.`;
     }
     const ticks = "```"
-    message = `${message}\n> ${data.subject}\nChanges [here](${data.compare}).`
+    message = `${message} [[Changes](${data.compare})]\n> ${data.subject}\n`
     robot.messageRoom("33oaeiebpif1pdtc9uimenzkzh", message);
     res.send("OK");
   });
