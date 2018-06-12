@@ -344,15 +344,6 @@ module.exports = function(robot) {
   
   robot.respond(/insult/i, msg => msg.send(`${insults[Math.floor(Math.random() * insults.length)].replace(/[\\\+]+/g, '')}`));
   
-  robot.respond(/givepoints\ (\w+)\ ([0-9]*)/i, msg => 
-  {
-    var __username = msg.match[1];
-    var __accountbalance = robot.brain.get(`${__username}__accountbalance`) * 1 || 0;
-    __accountbalance = __accountbalance + msg.match[2]? Number(msg.match[2]) : 1;
-    robot.brain.set(`${__username}__accountbalance`, __accountbalance);
-    msg.send(`${__username} now has ${__accountbalance} credits`);
-  });
-  
   robot.respond(/whatsmyid/i, msg => msg.send(`${msg.envelope.user.name}`));
 };
 
