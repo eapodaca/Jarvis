@@ -327,15 +327,19 @@ const fineableoffense = [
     'shit',
     'motherfucker',
     'nigger',
-    'pussy',
-    'shit',
+    'pussy'
 ];
 
 module.exports = function(robot) {
   const regex = new RegExp(`(?:(?:^|[^a-z"])(${fineableoffense.join('|')})(?:[a-z]?ed|es|ing|s)?(?:[^a-z"]|$))(?=(?:[^"]*"[^"]*")*[^"]*$)`, 'i');
-  robot.hear(regex, msg => msg.send(`${robot.brain.userForId(msg.envelope.user.id).name} has been fined one credit for a violation of the verbal morality statute.`));
+  robot.hear(regex, msg => 
+  {
+    accountbalance = robot.brain.get('#{msg.envelope.user.name}__accountbalance') * 1 or 0;
+    accountbalance = accountbalance + 1;
+    robot.brain.set('#{msg.envelope.user}__accountbalance', accountbalance);
+    msg.send('#{msg.envelope.user.name} has been fined one credit for a total of #{accountbalance} credits in violation of the verbal morality statute.');
+  });
   
   return robot.respond(/insult/i, msg => msg.send(`${insults[Math.floor(Math.random() * insults.length)].replace(/[\\\+]+/g, '')}`));
 };
-
 
