@@ -8,7 +8,7 @@ module.exports = (robot) => {
       message = `:interrobang:  My deploy failed. Shame on you ${data.user.login}.`;
     }
     const ticks = "```"
-    message = `${message}\n${ticks}json\n${JSON.stringify(data, null, 2)}\n${ticks}\nChanges [here](${data.compare}).`
+    message = `${message}\n\n${ticks}json\n${JSON.stringify(data, null, 2)}\n${ticks}\n\nChanges [here](${data.compare}).`
     robot.messageRoom("33oaeiebpif1pdtc9uimenzkzh", message);
     res.send("OK");
   });
