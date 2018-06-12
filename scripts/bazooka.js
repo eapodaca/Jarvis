@@ -8,6 +8,7 @@ Array.prototype.randomElement = function () {
 };
 
 const messages = {
+  "batman": "I'm batman!!",
   "i\\s+like": ["I like barsandpwn's mom", "I :heart: @barsandpwn's mom"],
   "(drumpf|trump)": "Shhh! He might hear you and try to strangle you with his small hands!",
   "@satire": "@sarif thinks your autocorrect is bad and you should feel bad.",
