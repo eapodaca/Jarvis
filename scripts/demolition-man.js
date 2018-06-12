@@ -350,7 +350,7 @@ module.exports = function(robot) {
   {
     var username = msg.match[1];
     var accountbalance = robot.brain.get(`${username}__accountbalance`) * 1 || 0;
-    accountbalance = accountbalance + msg.match[2]? Number(msg.match[2]) : 1;
+    accountbalance = accountbalance + (msg.match[2]? Number(msg.match[2]) : 1);
     robot.brain.set(`${username}__accountbalance`, accountbalance);
     msg.send(`${username} now has ${accountbalance} credits`);
   });
