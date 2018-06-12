@@ -334,16 +334,25 @@ module.exports = function(robot) {
   const finesregex = new RegExp(`(?:(?:^|[^a-z"])(${fineableoffense.join('|')})(?:[a-z]?ed|es|ing|s)?(?:[^a-z"]|$))(?=(?:[^"]*"[^"]*")*[^"]*$)`, 'i');
   robot.hear(finesregex, msg => 
   {
-    var finecount = ((msg || '').match(finesregex) || []).length;
+    //var finecount = ((msg || '').match(finesregex) || []).length;
     var accountbalance = robot.brain.get(`${msg.envelope.user.name}__accountbalance`) * 1 || 0;
-    accountbalance = accountbalance + finecount;
+    accountbalance = accountbalance + 1;
     robot.brain.set(`${msg.envelope.user.name}__accountbalance`, accountbalance);
-    var pluralcredits = finecount == 1? 'credit' : 'credits';
-    msg.send(`You have been fined ${finecount} ${pluralcredits} for a total of ${accountbalance} credits in violation of the verbal morality statute`);
+    //var pluralcredits = finecount == 1? 'credit' : 'credits';
+    msg.send(`You have been fined one credits for a total of ${accountbalance} credits in violation of the verbal morality statute`);
   });
   
   robot.respond(/insult/i, msg => msg.send(`${insults[Math.floor(Math.random() * insults.length)].replace(/[\\\+]+/g, '')}`));
   
   robot.respond(/whatsmyid/i, msg => msg.send(`${msg.envelope.user.name}`));
+  
+  robot.respond(/givepoints\ (\w+)\ ([0-9]*)/i, msg => 
+  {
+    var username = msg.match[1];
+    var accountbalance = robot.brain.get(`${username}__accountbalance`) * 1 || 0;
+    accountbalance = accountbalance + msg.match[2]? Number(msg.match[2]) : 1;
+    robot.brain.set(`${username}__accountbalance`, accountbalance);
+    msg.send(`${username} now has ${accountbalance} credits`);
+  });
 };
 
