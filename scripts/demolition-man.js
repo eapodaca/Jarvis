@@ -331,7 +331,7 @@ const fineableoffense = [
 ];
 
 module.exports = function(robot) {
-  finesregex = new RegExp(`(?:(?:^|[^a-z"])(${fineableoffense.join('|')})(?:[a-z]?ed|es|ing|s)?(?:[^a-z"]|$))(?=(?:[^"]*"[^"]*")*[^"]*$)`, 'i');
+  const finesregex = new RegExp(`(?:(?:^|[^a-z"])(${fineableoffense.join('|')})(?:[a-z]?ed|es|ing|s)?(?:[^a-z"]|$))(?=(?:[^"]*"[^"]*")*[^"]*$)`, 'i');
   robot.hear(finesregex, msg => 
   {
     var finecount = ((msg || '').match(finesregex) || []).length;
@@ -344,14 +344,13 @@ module.exports = function(robot) {
   
   robot.respond(/insult/i, msg => msg.send(`${insults[Math.floor(Math.random() * insults.length)].replace(/[\\\+]+/g, '')}`));
   
-  pointsregex = new RegExp(`givepoints\ (\w+)\ ([0-9]*)`, 'i');
-  robot.respond(pointsregex, msg => 
+  robot.respond(/givepoints\ (\w+)\ ([0-9]*)/i, msg => 
   {
-    var username = msg.match[2];
-    var accountbalance = robot.brain.get(`${username}__accountbalance`) * 1 || 0;
-    accountbalance = accountbalance + msg.match[3]? Number(msg.match[3]) : 1;
-    robot.brain.set(`${username}__accountbalance`, accountbalance);
-    msg.send(`${username} now has ${accountbalance} credits`);
+    var __username = msg.match[1];
+    var __accountbalance = robot.brain.get(`${__username}__accountbalance`) * 1 || 0;
+    __accountbalance = __accountbalance + msg.match[2]? Number(msg.match[2]) : 1;
+    robot.brain.set(`${__username}__accountbalance`, __accountbalance);
+    msg.send(`${__username} now has ${__accountbalance} credits`);
   });
   
   robot.respond(/whatsmyid/i, msg => msg.send(`${msg.envelope.user.name}`));
