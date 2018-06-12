@@ -331,10 +331,10 @@ const fineableoffense = [
 ];
 
 module.exports = function(robot) {
-  const finesregex = new RegExp(`(?:(?:^|[^a-z"])(${fineableoffense.join('|')})(?:[a-z]?ed|es|ing|s)?(?:[^a-z"]|$))(?=(?:[^"]*"[^"]*")*[^"]*$)`, 'i');
+  const finesregex = new RegExp(`(?:(?:^|[^a-z"])(${fineableoffense.join('|')})(?:[a-z]?ed|es|ing|s)?(?:[^a-z"]|$))(?=(?:[^"]*"[^"]*")*[^"]*$)`, 'ig');
   robot.hear(finesregex, msg => 
   {
-    const finecount = ((msg || '').match(finesregex) || []).length;
+    const finecount = (msg.match(finesregex) || []).length;
     var accountbalance = robot.brain.get(`${msg.envelope.user.name}__accountbalance`) * 1 || 0;
     accountbalance = accountbalance + finecount;
     robot.brain.set(`${msg.envelope.user.name}__accountbalance`, accountbalance);
