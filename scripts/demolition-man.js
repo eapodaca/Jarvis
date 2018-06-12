@@ -336,7 +336,7 @@ module.exports = function(robot) {
   {
     //const finecount = (msg.match(finesregex) || []).length;
     var accountbalance = robot.brain.get(`${msg.envelope.user.name}__accountbalance`) * 1 || 0;
-    accountbalance = accountbalance + finecount;
+    accountbalance = accountbalance + 1;
     robot.brain.set(`${msg.envelope.user.name}__accountbalance`, accountbalance);
     //const pluralcredits = (finecount == 1? 'credit' : 'credits');
     msg.send(`You have been fined one credit for a total of ${accountbalance} credits in violation of the verbal morality statute`);
