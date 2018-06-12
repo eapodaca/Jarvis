@@ -1,7 +1,7 @@
 module.exports = (robot) => {
   robot.router.post("/circle-ci", (req, res) => {
     const data = req.body.payload;
-    const username = data.all_commit_details[0].author_name;
+    const username = data.all_commit_details[0].author_login;
     message = "";
     if(!data.failed) {
       message = `:ok_man:  I've been deployed successfully by ${username}`;
