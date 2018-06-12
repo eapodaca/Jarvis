@@ -331,7 +331,7 @@ const fineableoffense = [
 ];
 
 module.exports = function(robot) {
-  const finesregex = new RegExp(`(?:(?:^|[^a-z"])(${fineableoffense.join('|')})(?:[a-z]?ed|es|ing|s)?(?:[^a-z"]|$))(?=(?:[^"]*"[^"]*")*[^"]*$)`, 'ig');
+  const finesregex = new RegExp(`(?:(?:^|[^a-z"])(${fineableoffense.join('|')})(?:[a-z]?ed|es|ing|s)?(?:[^a-z"]|$))(?=(?:[^"]*"[^"]*")*[^"]*$)`, 'i');
   robot.hear(finesregex, msg => 
   {
     //const finecount = (msg.match(finesregex) || []).length;
