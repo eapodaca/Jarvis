@@ -1,14 +1,15 @@
 module.exports = (robot) => {
   robot.router.post("/circle-ci", (req, res) => {
     const data = req.body.payload;
+    const username = data.all_commit_details[0].author_name;
     message = "";
     if(!data.failed) {
-      message = `:ok_man:  I've been deployed successfully by ${data.user.login}`;
+      message = `:ok_man:  I've been deployed successfully by ${username}`;
     } else {
-      message = `:interrobang:  My deploy failed. Shame on you ${data.user.login}.`;
+      message = `:interrobang:  My deploy failed. Shame on you ${username}.`;
     }
     const ticks = "```"
-    message = `${message}\n\n\n${ticks}json\n${JSON.stringify(data, null, 2)}\n${ticks}\n\nChanges [here](${data.compare}).`
+    message = `${message}\n> ${data.subject}\nChanges [here](${data.compare}).`
     robot.messageRoom("33oaeiebpif1pdtc9uimenzkzh", message);
     res.send("OK");
   });
