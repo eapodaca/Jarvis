@@ -7,8 +7,8 @@ module.exports = (robot) => {
     } else {
       message = `:interrobang:  My deploy failed. Shame on you ${data.user.login}.`;
     }
-    message = `${message}\nChanges [here](${data.compare}).`
-    robot.messageRoom("duxb9ptk8pr8mcwnhounggg51y", message);
+    message = `${message}\n\`\`\`\n${JSON.stringify(data)}\`\`\`\nChanges [here](${data.compare}).`
+    robot.messageRoom("33oaeiebpif1pdtc9uimenzkzh", message);
     res.send("OK");
   });
   robot.router.get("/circle-ci-users", (req, res) => {
