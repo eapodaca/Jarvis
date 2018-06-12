@@ -334,12 +334,30 @@ module.exports = function(robot) {
   const regex = new RegExp(`(?:(?:^|[^a-z"])(${fineableoffense.join('|')})(?:[a-z]?ed|es|ing|s)?(?:[^a-z"]|$))(?=(?:[^"]*"[^"]*")*[^"]*$)`, 'i');
   robot.hear(regex, msg => 
   {
+    var finecount = ((msg || '').match(regex) || []).length;
     var accountbalance = robot.brain.get(`${msg.envelope.user.name}__accountbalance`) * 1 || 0;
-    accountbalance = accountbalance + 1;
+    accountbalance = accountbalance + finecount;
     robot.brain.set(`${msg.envelope.user.name}__accountbalance`, accountbalance);
-    msg.send(`You have been fined one credit for a total of ${accountbalance} credits in violation of the verbal morality statute`);
+    var pluralcredits = finecount == 1? 'credit' : 'credits';
+    msg.send(`You have been fined ${finecount} ${pluralcredits} for a total of ${accountbalance} credits in violation of the verbal morality statute`);
   });
   
-  return robot.respond(/insult/i, msg => msg.send(`${insults[Math.floor(Math.random() * insults.length)].replace(/[\\\+]+/g, '')}`));
+  robot.respond(/insult/i, msg => msg.send(`${insults[Math.floor(Math.random() * insults.length)].replace(/[\\\+]+/g, '')}`));
+  
+  robot.respond(/givepoints\s+([\w0-9]*)\s+([0-9]*)/i, msg => 
+  {
+    var username = msg.match[1]? msg.match[1] : 'jarvis';
+    var accountbalance = robot.brain.get(`${username}__accountbalance`) * 1 || 0;
+    accountbalance = accountbalance + msg.match[2]? Math.abs(Number(msg.match[2])) : 1;
+    robot.brain.set(`${username}__accountbalance`, accountbalance);
+    msg.send(`${username} now has ${pointscount} credits`);
+  });
+  
+  //9b5ysemyc3yj58nyhjwuo1tesr commanderdirtbag
+  //58si1nf84iy67fhjwiboohbaha sarif
+  //4bn51hjxqtbm8p59kbh9za6gxc barsandpwn
+  //e37h1xepsffz9r46yyafhok9ch celophi
+  //1n5wqo6nepfczdnum7eabbsyhc pizzahands
+  robot.respond(/whatsmyid/i, msg => msg.send(`${msg.envelope.user.name}`));
 };
 
