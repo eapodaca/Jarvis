@@ -345,7 +345,7 @@ module.exports = function(robot) {
   robot.respond(/insult/i, msg => msg.send(`${insults[Math.floor(Math.random() * insults.length)].replace(/[\\\+]+/g, '')}`));
   
   const pointsregex = new RegExp(`givepoints\s?(\w*)\s?([0-9]*)`, 'i');
-  robot.hear(pointsregex, msg => 
+  robot.respond(pointsregex, msg => 
   {
     var username = msg.match[1]? msg.match[1] : 'jarvis';
     var accountbalance = robot.brain.get(`${username}__accountbalance`) * 1 || 0;
