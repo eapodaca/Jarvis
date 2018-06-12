@@ -9,7 +9,7 @@ module.exports = (robot) => {
       message = `:interrobang:  My deploy failed. Shame on you ${username}.`;
     }
     const ticks = "```"
-    message = `${message} [[Changes](${data.compare})]\n> ${data.subject}\n`
+    message = `${message} [[Changes](${data.compare})]\n> ${data.subject}`
     robot.messageRoom("33oaeiebpif1pdtc9uimenzkzh", message);
     res.send("OK");
   });
