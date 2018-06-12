@@ -334,7 +334,7 @@ module.exports = function(robot) {
   const regex = new RegExp(`(?:(?:^|[^a-z"])(${fineableoffense.join('|')})(?:[a-z]?ed|es|ing|s)?(?:[^a-z"]|$))(?=(?:[^"]*"[^"]*")*[^"]*$)`, 'i');
   robot.hear(regex, msg => 
   {
-    accountbalance = robot.brain.get('#{msg.envelope.user.name}__accountbalance') * 1 or 0;
+    var accountbalance = robot.brain.get('#{msg.envelope.user.name}__accountbalance') * 1 || 0;
     accountbalance = accountbalance + 1;
     robot.brain.set('#{msg.envelope.user}__accountbalance', accountbalance);
     msg.send('#{msg.envelope.user.name} has been fined one credit for a total of #{accountbalance} credits in violation of the verbal morality statute.');
