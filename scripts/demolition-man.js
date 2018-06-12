@@ -346,7 +346,7 @@ module.exports = function(robot) {
   
   robot.respond(/whatsmyid/i, msg => msg.send(`${msg.envelope.user.name}`));
   
-  robot.respond(/givepoints\ (\w+)\ ([0-9]*)/i, msg => 
+  robot.respond(/givepoints\ (\w+)(?:\ ([0-9]*))?/i, msg => 
   {
     var username = msg.match[1];
     var accountbalance = robot.brain.get(`${username}__accountbalance`) * 1 || 0;
