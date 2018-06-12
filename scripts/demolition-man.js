@@ -347,9 +347,9 @@ module.exports = function(robot) {
   const pointsregex = new RegExp(`givepoints\ (\w+)\ ([0-9]*)`, 'i');
   robot.respond(pointsregex, msg => 
   {
-    const username = msg.match[1];
+    const username = msg.match[2];
     var accountbalance = robot.brain.get(`${username}__accountbalance`) * 1 || 0;
-    accountbalance = accountbalance + msg.match[2]? Number(msg.match[2]) : 1;
+    accountbalance = accountbalance + msg.match[3]? Number(msg.match[3]) : 1;
     robot.brain.set(`${username}__accountbalance`, accountbalance);
     msg.send(`${username} now has ${accountbalance} credits`);
   });
