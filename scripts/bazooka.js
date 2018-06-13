@@ -29,10 +29,10 @@ const messages = {
     ":poultry_leg:"
   ],
   "help": "https://media.giphy.com/media/phJ6eMRFYI6CQ/giphy.gif",
-  "weather": "http://i.imgur.com/PCWqrYG.gif",
+  "weather": "https://i.imgur.com/PCWqrYG.gif",
   "reference": "https://i.imgur.com/XS5LK.gif",
   "fine": "https://media.giphy.com/media/3o6UBpHgaXFDNAuttm/giphy.gif",
-  "back\\sto\\s\\swork": "https://i.imgur.com/gajx18c.gif",
+  "back\\sto\\swork": "https://i.imgur.com/gajx18c.gif",
   "options": [
     "https://media.giphy.com/media/K7QDQeUgrIyFW/giphy.gif",
     "https://media.giphy.com/media/xUA7aUNw61j9Vdzs0U/giphy.gif"
