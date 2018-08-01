@@ -36,6 +36,10 @@ const messages = {
   "options": [
     "https://media.giphy.com/media/K7QDQeUgrIyFW/giphy.gif",
     "https://media.giphy.com/media/xUA7aUNw61j9Vdzs0U/giphy.gif"
+  ],
+  "fabulous": [
+    "https://media.giphy.com/media/YtSvlXwlmcBPO/giphy.gif",
+    "https://media.giphy.com/media/5Bvu84OEog45W/giphy.gif"
   ]
 };
 
