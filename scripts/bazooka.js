@@ -41,7 +41,11 @@ const messages = {
     "https://media.giphy.com/media/YtSvlXwlmcBPO/giphy.gif",
     "https://media.giphy.com/media/5Bvu84OEog45W/giphy.gif"
   ],
-  "forget\\sit": "https://i.imgur.com/4mOD1FF.gif"
+  "forget\\sit": "https://i.imgur.com/4mOD1FF.gif",
+  "popcorn": [
+    "https://i.imgur.com/kGhIjsP.gif",
+    "https://i.imgur.com/0hQyd5L.gif"
+  ]
 };
 
 const random = (values) => (res) => res.send(Array.isArray(values) ? values.randomElement() : values);
